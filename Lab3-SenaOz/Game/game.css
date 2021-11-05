@@ -1,0 +1,14 @@
+table {
+    border-collapse: collapse;
+    text-align: center;
+    color: #d6f1ff;
+    background-color: #011723;
+}
+td {
+    border: 2px solid #c9c45d;
+    width: 5em;
+}
+span {
+    font-size: 4em;
+    font-weight: bold;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="list, form, lab, mis233, sena öz, web page, HTML">
+    <meta name="description" content="Second Week of Lab Example">
+    <meta name="robots" content="index, follow">
+    <title>MIS 233 - LAB 1 - Sena ÖZ</title>
+</head>
+
+<body>
+<header>
+    <h1 style="font-family: 'SF Pro'" id="title">MIS 233 Web Programming - Lab Section</h1>
+    <p>Welcome to MIS 233 Lab!</p>
+</header>
+
+
+<section id="contact">
+    <h2>Contact Info</h2>
+    Click the link to visit my website
+    <p><i>This is our course website: </i><a href="https://moodle.boun.edu.tr/course/view.php?id=50401">MIS 233</a></p>
+    <p><b>Click the link to visit my website: </b><a href="https://senaoz.com.tr">My Page</a></p>
+    <p>Click the link to send me an email:<a href="mailto:tazeyta@gmail.com">Mail</a></p>
+    <p>Whatsapp: <a href="https://wa.me/905532704508?text=Merhaba"><img src="img.png" width="40" align="center"></a></p>
+</section>
+
+<section id="list">
+<h2>Contents of the First Lab</h2>
+<ol>
+    <li>Heading</li>
+    <li>Linking</li>
+    <li>Images</li>
+    <ul>
+        <li>alt Attribut</li>
+        <li>Void Elements</li>
+        <li>Using Images as Hyperlinks</li>
+    </ul>
+    <li>Special Characters and Horizantal Rules</li>
+    <li>Lists</li>
+    <li>Tables</li>
+    <li>Forms</li>
+    <li>Internal Linking</li>
+    <li>meta Elements</li>
+</ol>
+</section>
+
+<section id="2">
+    <h2>Table Example</h2>
+    <table border="1">
+        <caption>Here is a small sample table</caption>
+        <thead>
+        <tr><th  colspan="2">This is the table head<th></tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>This is the body row 1 cell 1 </td>
+            <td>This is the body row 1 cell 2 </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <img src="thebook.jpg" width="100" height="100" alt="The Book">
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>This is the table foot 1</th>
+            <th>This is the table foot 2</th>
+        </tr>
+        </tfoot>
+    </table>
+</section>
+<hr>
+<section id="form">
+    <form>
+    <h2>Form Example</h2>
+    <h3>Feedback Form</h3>
+    <p><u>Please fill out this form.</u></p>
+    <p>
+        <label>Full Name:</label>
+        <input type="text" name="name" size="30">
+    </p>
+    <p>
+        <label>Phone Number:</label>
+        <input type="tel" placeholder="(###) ### ####" name="phonenumber" pattern="\(\d{3}\)+\d{3}-\d{4}" required>
+    </p>
+    <p>
+        <label>E-mail:</label>
+        <input type="email" placeholder="name@domain.com" name="mail" required size="30">
+    </p>
+    <p>
+        <label>URL:</label>
+        <input type="url" placeholder="https://www.domain.com" name="website" size="35">
+    </p>
+    <p>
+        <label>Gender:</label>
+        <label>Female</label><input type="radio" name="gender">
+        <label>Male</label><input type="radio" name="gender">
+        <label>Prefer to not say</label><input type="radio" name="gender">
+    </p>
+    <p>
+        <label>University:</label>
+        <select name="university" placeholder="Enter your university">
+            <option value="BOUN">Bogazici University</option>
+            <option value="METU">Middle East Technical University</option>
+            <option value="IST">Istanbul University</option>
+        </select>
+    </p>
+    <p>
+        <label>Color:</label>
+        <input type="color" name="color">
+    </p>
+    <p>
+        <label>Date:</label>
+        <input type="date" name="date">
+    </p>
+    <p>
+        <label>Check off the parts that you enjoyed:</label><br>
+        <label>List</label><input type="checkbox" checked name="list">
+        <label>Table</label><input type="checkbox" checked name="list">
+        <label>Form</label><input type="checkbox" checked name="list">
+    </p>
+    <p>
+        <label>Rate your site:</label>
+        <select name="puanlama">
+            <option>Amazing</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+            <option>Awful</option>
+        </select>
+    </p>
+    <p>
+        <label>Range:</label>
+        10 <input type="range" name="barRange" min="10" max="100" value="30"> 100
+    </p>
+    <p>
+        <label>Please give us additional feedback:</label><br>
+        <textarea name="feedback" rows="10" cols="50"></textarea>
+    </p>
+    <p>
+        <input type="submit" name="submit" value="Send Your Form">
+        <input type="reset" name="clear" value="Clear The Form">
+    </p>
+    </form>
+</section>
+<hr>
+<footer>
+    <p>All information on this site is <b>&copy; Deitel & Associates, Inc. 2012.</b><br>
+        <del>You may download 3.14 x 10<sup>2</sup> characters worth of information from this site.</del>The first item in the series is x<sub>1</sub>.<br>
+        Note: &lt; &frac14; of the information presented here is updated daily.<br>
+        Go to <a href="#title">main title.</a>
+    </p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Factorial</title>
+</head>
+<body style="padding: 150px; text-align: center; font-family: 'Arial';">
+<h1>Factorial Calculator</h1>
+<p>The factorial of a non-negative number is computed as the product of all integers between 1 and the number (both inclusive).</p>
+<p>Enter a number: <input id = "number"></p>
+<button onclick = "factorial()"> CALCULATE </button>
+<h3 id="output"></h3>
+
+<script>
+    function factorial(){
+        var n;
+        n = document.getElementById("number").value;
+        var answer = 1;
+        if (n == 0 || n == 1) {
+            answer = 1;
+        }
+        else {
+            for(var i = n; i >= 1; i--){
+                answer = answer * i;
+            }
+        }
+        document.getElementById("output").innerHTML = (answer + " is the factorial of " + n);
+    }
+</script>
+</body>
+</html>

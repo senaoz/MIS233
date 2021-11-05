@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess Example</title>
+    <script>
+        var correct=Math.floor(1+Math.random()*1000);
+
+        function CheckAnswer(){
+            var givenValue= document.getElementById("inputBox").value;
+            if(correct<givenValue){
+                document.getElementById("hint").innerHTML="Too high";
+            }
+            if(correct>givenValue){
+                document.getElementById("hint").innerHTML="Too low";
+            }
+            if(correct == givenValue){
+                document.getElementById("hint").innerHTML="Congratulations! You found the secret :)";
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+    Guess a number from 1 to 1000: <input id="inputBox" type="number">
+    <button id="CheckButton" onclick="CheckAnswer();">CHECK</button>
+    <br>
+    <p id="hint">Your hint comes here.</p>
+
+</body>
+</html>
