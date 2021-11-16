@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style type="text/css">
+        #score {
+            font-size: 45px;
+            font-family: Tahoma, "SF Pro";
+            padding: 10px 15px;
+            text-align: right;
+        }
+
+        #startButton {
+            padding: 10px;
+            background-color: gray;
+            font: bold 14px Tahoma, "SF Pro";
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            color: white;
+            position: absolute;
+            border: 0px;
+        }
+
+        #startButton:hover{
+            cursor: pointer;
+        }
+
+        .bubble {
+            position: absolute;
+            width:30px;
+            height: 30px;
+            font: bold 14px Tahoma, "SF Pro";
+            background-color: yellow;
+            text-align: center;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            vertical-align: middle;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="score">0</div>
+<button id="startButton"> START </button>
+
+<script>
+    $(document).ready(function (){
+
+        var height = screen.height - 200;
+        var width = screen.width - 100;
+        var score = 0;
+
+        $("#score").hide();
+
+        $("#startButton").css({
+            "top" : (height / 2) + "px",
+            "left" : (width / 2) + "px",
+        });
+
+        $("#startButton").click(function (){
+            $(this).fadeOut("slow");
+            $("#score").show();
+            genLetter();
+        });
+
+        function genLetter(){
+            var color = genColor();
+            var k = Math.floor(Math.random() * (90 - 65 + 1) +65);
+            var ch = String.fromCharCode(k);
+            var top = Math.floor(Math.random() * height);
+            var left = Math.floor(Math.random() * width);
+            $("body").append("<span class='bubble' id='"+ch+"' style='left:"+ left +"px; top:"+ top +"px; background-color: #"+ color +"'>"+ ch +"</span>");
+
+            setTimeout(genLetter, 1000);
+        }
+
+        function genColor(){
+            var color = "";
+            var values = ["a", "b", "c", "d", "f", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+            for (var i=0; i<6; i++) {
+                var temp = Math.floor(Math.random()*15);
+                color += values[temp];
+            }
+            return color;
+        }
+
+        $(document).keydown(function (event){
+            var keycode = String.fromCharCode(event.keyCode);
+            var bubbs = document.getElementById(keycode);
+
+            if (bubbs) { // to prevent earning points from incorrect keyboard clicks
+                $("#"+keycode).remove();
+                score += 20;
+                $("#score").html(score);}
+
+            else { // -5 points each incorrect keyboard clicks
+                score -= 5;
+                $("#score").html(score); }
+        }
+        );
+    });
+
+</script>
+</body>
+</html>

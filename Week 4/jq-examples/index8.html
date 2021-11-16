@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function (){ //$(function(){
+            $("button").click(function (){
+                    //var a= $("#a1").attr("href");
+                    //$("#a1").attr("href","https://www.boun.edu.tr");
+                    $("#a1").attr("href",function (i,origValue){
+                        return origValue + "/image";
+                    });
+                }
+            );
+
+        });
+    </script>
+</head>
+<body>
+<a id="a1" href="https://www.google.com.tr" target="_blank">CLICK TO ACCESS GOOGLE</a>
+<div style="background-color: red; min-height: 100px" id="d1">my red div</div>
+<div style="background-color: green; min-height: 100px" id="d2">my green div</div>
+<div style="background-color: blue; min-height: 100px" id="d3">my blue div</div>
+<button>CLICK</button>
+</body>
+</html>

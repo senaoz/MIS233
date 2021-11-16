@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function (){ //$(function(){
+            $("button").click(function (){
+                   $("tr:odd").css("background-color","green");
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr><td>00</td><td>01</td></tr>
+        <tr><td>10</td><td>11</td></tr>
+        <tr><td>20</td><td>21</td></tr>
+        <tr><td>30</td><td>31</td></tr>
+        <tr><td>40</td><td>41</td></tr>
+        <tr><td>50</td><td>51</td></tr>
+    </table>
+    <button>CLICK 1</button>
+    <button>CLICK 2</button>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style type="text/css">
+        .imgStyle {
+            width: 120px;
+            height: 90px;
+            border: 3px solid #9a9a9a;
+        }
+    </style>
+</head>
+<body>
+<img id="mainIMG" src="img/boun_1.jpg" width="645px"/>
+<br>
+<div id="thumbnail">
+    <img class="imgStyle" src="img/boun_1.jpg">
+    <img class="imgStyle" src="img/boun_2.jpg">
+    <img class="imgStyle" src="img/boun_3.jpg">
+    <img class="imgStyle" src="img/boun_4.jpg">
+    <img class="imgStyle" src="img/boun_5.jpg">
+</div>
+
+
+<script>
+    $(document).ready(function (){
+        $('.imgStyle').on({
+            click : function () {
+                var imgURL = $(this).attr("src");
+                $("#mainIMG").fadeOut(800, function (){
+                    $(this).attr("src", imgURL); //mainIMG object
+                }).fadeIn(1000);
+            },
+            mouseover : function () {
+                $(this).css({
+                     "border-color" : "green"
+                    });
+            },
+            mouseleave : function () {
+                $(this).css({
+                    "border-color" : "#313131"
+                });
+            }
+        });
+
+    });
+
+
+</script>
+</body>
+</html>
