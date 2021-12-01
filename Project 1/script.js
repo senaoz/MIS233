@@ -1,14 +1,18 @@
-var draughtsInitial = [ // ' ' is an empty square, 'b' a black piece, 'w' a white piece; 'B' and 'W' are kings.
-    [' ','b',' ','b',' ','b',' ','b'],
-    ['b',' ','b',' ','b',' ','b',' '],
-    [' ','b',' ','b',' ','b',' ','b'],
-    [' ',' ',' ',' ',' ',' ',' ',' '],
-    [' ',' ',' ',' ',' ',' ',' ',' '],
-    ['w',' ','w',' ','w',' ','w',' '],
-    [' ','w',' ','w',' ','w',' ','w'],
-    ['w',' ','w',' ','w',' ','w',' ']];
+var blackSquares = document.querySelectorAll(".blackSquare");
+var whiteSquares = document.querySelectorAll(".whiteSquare");
+var whitePieces = document.querySelectorAll(".WhitePiece") ;
+var blackPieces = document.querySelectorAll(".BlackPiece");
 
-var draughts = [];
-var player = 'B'; //active player
-var selected; // piece selected to be moved
-var possibleMoves = []; // the moves that is given the current board and player state.
+var turn = true; //if is it "true", it is the white's turn
+
+//Once a player has 0 pieces, the opposite player wins
+var whiteScore = 12;
+var blackScore = 12;
+
+var possibleMoves; // the moves that is given the current board and player state.
+
+// || means or
+
+var selected = {
+
+}
