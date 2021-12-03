@@ -3,16 +3,43 @@ var whiteSquares = document.querySelectorAll(".whiteSquare");
 var whitePieces = document.querySelectorAll(".WhitePiece") ;
 var blackPieces = document.querySelectorAll(".BlackPiece");
 
-var turn = true; //if is it "true", it is the white's turn
+var turn = true; //if it is true,the turn of the game is the white pieces.
 
-//Once a player has 0 pieces, the opposite player wins
-var whiteScore = 12;
-var blackScore = 12;
 
-var possibleMoves; // the moves that is given the current board and player state.
+$(".WhitePiece").click(function(){
+    if (turn = false) {
+        alert("The turn of the game is the black pieces.")
+    }
 
-// || means or
+    else {
+        showPossibleMoves()
+        $(this).fadeOut();
+    }
+});
 
-var selected = {
+$(".BlackPiece").click(function(){
+    if (turn = true) {
+        alert("The turn of the game is the white pieces.")
+    }
+    else {
+        $(this).fadeOut();
+    }
+});
 
+function showPossibleMoves(){
+
+    PossibleMoves()
+
+}
+
+function PossibleMoves(){
+
+}
+
+for (whitePieces of whitePieces) {
+    whitePieces.addEventListener("click", clicked);
+}
+
+for (blackPieces of blackPieces) {
+    blackPieces.addEventListener("click", clicked);
 }
