@@ -3,43 +3,40 @@ var whiteSquares = document.querySelectorAll(".whiteSquare");
 var whitePieces = document.querySelectorAll(".WhitePiece") ;
 var blackPieces = document.querySelectorAll(".BlackPiece");
 
-var turn = true; //if it is true,the turn of the game is the white pieces.
+var turn = 1; //if it is 1, the turn of the game is the white pieces.
 
 
-$(".WhitePiece").click(function(){
-    if (turn = false) {
+$(".WhitePiece").click(function(event){
+    var keycode = String.fromCharCode(event.keyCode);
+
+    if (turn = 0) {
         alert("The turn of the game is the black pieces.")
     }
 
     else {
-        showPossibleMoves()
+        PossibleMoves($(this))
         $(this).fadeOut();
+        return turn = 0;
     }
 });
 
 $(".BlackPiece").click(function(){
-    if (turn = true) {
+    if (turn = 1) {
         alert("The turn of the game is the white pieces.")
     }
     else {
         $(this).fadeOut();
+        return turn = 1;
     }
 });
 
-function showPossibleMoves(){
+function PossibleMoves(x){
+    var colNumber = x.closest('td').attr('id');
+    var rowNumber = x.closest('tr').attr('id');
 
-    PossibleMoves()
+    if ( x.className = 'WhitePiece'){
+    }
 
-}
-
-function PossibleMoves(){
-
-}
-
-for (whitePieces of whitePieces) {
-    whitePieces.addEventListener("click", clicked);
-}
-
-for (blackPieces of blackPieces) {
-    blackPieces.addEventListener("click", clicked);
+    else {
+    }
 }
