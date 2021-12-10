@@ -1,59 +1,84 @@
-var turn = 1; //if it is 1, the turn of the game is the white pieces.
+let turn = true; //if it is true, the turn of the game is the white pieces.
 
 $(".WhitePiece").click(function(event){
-    if (turn = 0) {
-        document.getElementById("message").innerHTML = "The turn of the game is the black pieces.";
-    }
-
+    if (turn == false) {
+        document.getElementById("message").innerHTML = "The turn of the game is the black pieces."; }
     else {
-        PossibleMoves($(this));
-        return turn = 0;
+        do {
+            PossibleMoves($(this));
+        } while ($('.WhitePiece').length == 0);
     }
 });
 
-$(".BlackPiece").click(function(){
-    if (turn = 1) {
-        document.getElementById("message").innerHTML = "The turn of the game is the white pieces.";
-    }
+$(".BlackPiece").click(function(event){
+    if (turn == true) {
+        document.getElementById("message").innerHTML = "The turn of the game is the white pieces."; }
     else {
-        $(this).fadeOut();
-        return turn = 1;
+        do {
+            PossibleMoves($(this));
+        } while ($('.BlackPiece').length == 0);
     }
 });
 
 
 function PossibleMoves(e){
-    var Y = parseInt(e.closest('tr').attr('id'));
-    var X = parseInt(e.closest('td').attr('id'));
-    var classN = e.closest('span').attr('class');
+    let Y = parseInt(e.closest('tr').attr('id'));
+    let X = parseInt(e.closest('td').attr('id'));
 
-    if ( classN = 'WhitePiece'){
+    if (turn == true){
         var PossibleY = Y+1;
+        var skippedPossibleY = Y+2;
         var PossibleX1 = X;
         var PossibleX2 = X-1;
-    }
-
-    else {
+        var skippedPossibleX1 = X+1; // Taşın üstünden atlayıp, karşı tarafın taşını yediği durum için X kordinatlarını belirliyor
+        var skippedPossibleX2 = X-2;
+    } else {
         var PossibleY = Y-1;
+        var skippedPossibleY = Y-2;
         var PossibleX1 = X;
         var PossibleX2 = X+1;
+        var skippedPossibleX1 = X-1;
+        var skippedPossibleX2 = X+2;
     }
 
-    document.getElementById("message").innerHTML = "Now you should select the square that is <br> where to go with double click.";
+    document.getElementById("message").innerHTML = "Now you should select the square that<br>is where to go with <b>double click.</b>";
+    selectSquare()
 
-    $(".blackSquare").dblclick(function(){
-        var SquareY = parseInt($(this).closest('tr').attr('id'));
-        var SquareX = parseInt($(this).closest('td').attr('id'));
-        var inner =  $(this).html();
+    function selectSquare() {
+        $(".blackSquare").dblclick(function (event) {
+            var SquareY = parseInt($(this).closest('tr').attr('id'));
+            var SquareX = parseInt($(this).closest('td').attr('id'));
+            var inner = $(this).html();
 
-        if ( inner == "") {
-            if (SquareY == PossibleY){
-                if (SquareX == (PossibleX1 || PossibleX2)) {
-                    alert("OLDU");
+            if (inner == "") {
+                if (SquareY == PossibleY) { //Karşı tarafın taşını yemeden tek kare ilerlediği durum
+                    if ((SquareX == PossibleX1) || (SquareX == PossibleX2)) {
+                        if (turn == true) {
+                            $(this).html("<span class=\"WhitePiece\"></span>");
+                            turn = false;
+                        } else if (turn == false) {
+                            $(this).html("<span class=\"BlackPiece\"></span>");
+                            turn = true;
+                        }
+                        e.remove();
+                        document.getElementById("message").innerHTML = "The turn of the game is changed.";
+                    }
+
+                    else document.getElementById("message").innerHTML = "It is not valid move.";
                 }
+
+                else if (SquareY == skippedPossibleY) { // Taşın üstünden atlayıp, karşı tarafın taşını yediği durum
+                    if ((SquareX == skippedPossibleX1) || (SquareX == skippedPossibleX2)) { // Yeni kordinatlar doğru mu?
+                        var row = document.getElementById(PossibleY);
+                        $("td").closest("tr", row).html();
+                    }
+
+                }
+
+                else document.getElementById("message").innerHTML = "It is not valid move.";
             }
-            else document.getElementById("message").innerHTML = "It is not valid move.";
-        }
-        else alert("You can't put the piece on a piece.");
-    });
+
+            else document.getElementById("message").innerHTML = "<b>You can't put the piece on a piece.</b>";
+        });
+    }
 }
