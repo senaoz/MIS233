@@ -20,7 +20,6 @@ $(".BlackPiece").click(function(event){
     }
 });
 
-
 function PossibleMoves(e){
     let Y = parseInt(e.closest('tr').attr('id')); // Satır numarasını seçiyor.
     let X = parseInt(e.closest('td').attr('id')); // O satırdaki taş numarasını seçiyor.
