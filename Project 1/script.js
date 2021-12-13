@@ -22,8 +22,8 @@ $(".BlackPiece").click(function(event){
 
 
 function PossibleMoves(e){
-    let Y = parseInt(e.closest('tr').attr('id'));
-    let X = parseInt(e.closest('td').attr('id'));
+    let Y = parseInt(e.closest('tr').attr('id')); // Satır numarasını seçiyor.
+    let X = parseInt(e.closest('td').attr('id')); // O satırdaki taş numarasını seçiyor.
 
     if (turn == true){
         var PossibleY = Y+1;
@@ -37,7 +37,7 @@ function PossibleMoves(e){
         var skippedPossibleY = Y-2;
         var PossibleX1 = X;
         var PossibleX2 = X+1;
-        var skippedPossibleX1 = X-1;
+        var skippedPossibleX1 = X-1; // Taşın üstünden atlayıp, karşı tarafın taşını yediği durum için X kordinatlarını belirliyor
         var skippedPossibleX2 = X+2;
     }
 
@@ -45,12 +45,12 @@ function PossibleMoves(e){
     selectSquare()
 
     function selectSquare() {
-        $(".blackSquare").dblclick(function (event) {
-            var SquareY = parseInt($(this).closest('tr').attr('id'));
-            var SquareX = parseInt($(this).closest('td').attr('id'));
+        $(".blackSquare").dblclick(function (event) { // Siyah karelere çift tıkladığında gideceği kareyi seçmiş olacak.
+            var SquareY = parseInt($(this).closest('tr').attr('id')); //Seçilen karenin satır numarasını seçiyor. 
+            var SquareX = parseInt($(this).closest('td').attr('id')); //Seçilen karenin satır içerisindeki sırasını seçiyor. 
             var inner = $(this).html();
 
-            if (inner == "") {
+            if (inner == "") { // Eğer karenin içerisinde taş yok ise;
                 if (SquareY == PossibleY) { //Karşı tarafın taşını yemeden tek kare ilerlediği durum
                     if ((SquareX == PossibleX1) || (SquareX == PossibleX2)) {
                         if (turn == true) {
