@@ -1,13 +1,16 @@
-<?php
-session_start();
-?>
 <html>
 <head>
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body style="padding: 50px 100px">
-<?php include("menu.php"); ?>
+<?php include("menu.php");
+// Eğer giriş yapmış ise uyarı veriyor.
+if (isset($_SESSION["u_mail"])){
+    $message = "You have already logged in.";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+}
+?>
 <?php
 if(isset($_POST["submit"])) {
     $u_mail = $_POST["u_mail"];
@@ -21,7 +24,7 @@ if(isset($_POST["submit"])) {
         $_SESSION["u_mail"] = $u_mail;
         $row = $result->fetch_row();
         $_SESSION["u_name"] = $row[2];
-        $_SESSION['authenticated'] = true;
+        $_SESSION['role'] = $row[9];
         header("Location: userindex.php");
     }
 }

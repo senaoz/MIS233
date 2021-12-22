@@ -54,19 +54,30 @@
     </style>
 </head>
 <body>
-<ul>
+<?php
+session_start();
+if (isset($_SESSION["u_mail"])){
+    echo '<ul>
     <li><a href="index.php">Home</a></li>
     <li><a href="courses.php">Courses</a></li>
     <li class="dropdown">
-        <a href="javascript:void(0)" class="dropbtn">User Menu</a>
+        <a href="userindex.php" class="dropbtn">User Menu</a>
         <div class="dropdown-content">
-            <a href="login.php">Login</a>
-            <a href="register.php">Register</a>
             <a href="userindex.php">My Page</a>
-            <a href="#">Logout</a>
+            <a href="register.php">Register New Users</a>
+            <a href="logout.php">Logout</a>
         </div>
     </li>
-</ul>
+</ul>';
+}
+else { echo '<ul>
+    <li><a href="index.php">Home</a></li>
+    <li><a href="courses.php">Courses</a></li>
+    <li><a href="login.php">Login</a></li>
+</ul>';
+}
+
+?>
 </body>
 
 
