@@ -14,7 +14,7 @@
         <a href="login.php"><span>Login</span></a>
     </div>
     <div class="box" id="box2">
-        <a href="register.php"><span>Register</span></a>
+        <a href="courses.php"><span>Courses</span></a>
     </div>
 </section>
 <?php include 'footer.php';?>

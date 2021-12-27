@@ -47,7 +47,7 @@ section {
 }
 
 h1 {
-    font-size: 55px;
+    font-size: 50px;
     font-weight: 800;
 }
 
@@ -82,4 +82,29 @@ input[type=submit] {
     letter-spacing: 5px;
     cursor: pointer;
     text-transform: uppercase;
+}
+
+#tables {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tables td, #tables th {
+    border: 1px solid #4f4f4f;
+    padding: 8px;
+}
+
+#tables tr:hover {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+#tables th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(59, 59, 59);
+}
+
+#edit {
+    color: #FFE770FF;
 }

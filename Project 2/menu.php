@@ -57,18 +57,33 @@
 <?php
 session_start();
 if (isset($_SESSION["u_mail"])){
-    echo '<ul>
+    if ($_SESSION["role"] == 'Admin') {
+            echo '<ul>
+    <li><a href="index.php">Home</a></li>
+    <li><a href="tables.php">Data</a></li>
+    <li><a href="courses.php">Courses</a></li>
+    <li class="dropdown">
+        <a href="userindex.php" class="dropbtn">Admin Menu</a>
+        <div class="dropdown-content">
+            <a href="userindex.php">My Page</a>
+            <a href="register.php">Register New Users</a>
+            <a href="createCourses.php">Create New Courses</a>
+            <a href="logout.php">Logout</a>
+            </ul>';
+        }
+
+    else {
+        echo '<ul>
     <li><a href="index.php">Home</a></li>
     <li><a href="courses.php">Courses</a></li>
     <li class="dropdown">
         <a href="userindex.php" class="dropbtn">User Menu</a>
         <div class="dropdown-content">
             <a href="userindex.php">My Page</a>
-            <a href="register.php">Register New Users</a>
             <a href="logout.php">Logout</a>
-        </div>
-    </li>
-</ul>';
+            </ul>';
+    }
+
 }
 else { echo '<ul>
     <li><a href="index.php">Home</a></li>

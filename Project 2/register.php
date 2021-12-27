@@ -3,24 +3,20 @@
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="style.cs">
 </head>
-<body style="padding: 50px 100px">
+<body style="padding: 5% 8%;">
+<?php include("menu.php"); include("settings.php");
 
-<?php include("menu.php");
 $u_mail = $_SESSION["u_mail"];
-$db = new mysqli("127.0.0.1", "root", "", "MIS 233");
-$query = "select * from users where u_mail='$u_mail'";
-$result = $db->query($query);
-$row = $result->fetch_row();
-if ($_SESSION['role'] == 'admin') {
-      $message = "Administrators can register new users to the system with this page. Please fill out the form for each new user.";
-      echo "<script type='text/javascript'>alert('$message');</script>";
+
+if ($_SESSION['role'] == 'Admin') {
+      $m = "Administrators can register new users to the system with this page. Please fill out the form for each new user.";
+      echo "<script type='text/javascript'>alert('$m');</script>";
   }
 else {
-    header("Location: index.php"); }
-?>
+    header("Location: index.php"); } ?>
 
 <?php
-if(isset($_POST["submit"])) {
+if (isset($_POST["submit"])) {
     $u_mail = $_POST["u_mail"];
     $u_name = $_POST["u_name"];
     $u_surname = $_POST["u_surname"];
@@ -39,12 +35,11 @@ if(isset($_POST["submit"])) {
     } else {
         echo "<br><br>Something wrong. Please try again.";
     }
-}
-?>
+} ?>
 
 <div>
     <form action="register.php" method="post">
-        <span class="gradientText">Registration</span>
+        <span class="gradientText">New User Registration</span>
         <label>Name</label>
         <input type="text" name="u_name" required>
         <label>Surname</label>
@@ -52,13 +47,13 @@ if(isset($_POST["submit"])) {
         <label>E-mail</label>
         <input type="email" name="u_mail" required>
         <label>Phone Number</label>
-        <input type="text" id="phone" name="u_phone" placeholder="Ex: +90 505 123 45 67">
+        <input type="text" name="u_phone" placeholder="Ex: +90 505 123 45 67">
         <label>Country</label>
         <input type="text" name="u_country">
         <label>City</label>
         <input type="text" name="u_city">
         <label>University</label>
-        <select id="university" name="u_uni">
+        <select name="u_uni">
             <option id='Abant İzzet Baysal Üniversitesi'>Abant İzzet Baysal Üniversitesi</option>
             <option id='Abdullah Gül Üniversitesi'>Abdullah Gül Üniversitesi</option>
             <option id='Acıbadem Mehmet Ali Aydınlar Üniversitesi'>Acıbadem Mehmet Ali Aydınlar Üniversitesi</option>
@@ -243,12 +238,12 @@ if(isset($_POST["submit"])) {
             <option id='Yüksek İhtisas Üniversitesi'>Yüksek İhtisas Üniversitesi</option>
         </select>
         <label>Password</label>
-        <input type="password" name="u_password" required>
+        <input type="password" name="u_password" minlength="<?php $MinPwd?>" maxlength="<?php $MaxPwd?>" required>
         <label>Select the role of user</label>
         <select id="role" name="role">
-            <option id='admin'>Admin</option>
-            <option id='prof'>Proffe</option>
-            <option id='admin'>Admin</option>
+            <option id='Admin'>Admin</option>
+            <option id='Professor'>Professor</option>
+            <option id='Student'>Student</option>
         </select>
     <input type="submit" name="submit" value="Register">
 </form>

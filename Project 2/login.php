@@ -7,24 +7,27 @@
 <?php include("menu.php");
 // Eğer giriş yapmış ise uyarı veriyor.
 if (isset($_SESSION["u_mail"])){
-    $message = "You have already logged in.";
-    echo "<script type='text/javascript'>alert('$message');</script>";
+    $m = "You have already logged in.";
+    echo "<script type='text/javascript'>alert('$m');</script>";
 }
 ?>
 <?php
 if(isset($_POST["submit"])) {
     $u_mail = $_POST["u_mail"];
     $u_password = $_POST["u_password"];
-    $db = new mysqli("127.0.0.1", "root", "", "MIS 233");
-    $query = "select * from users where u_mail='$u_mail' and u_password='$u_password'";
+    include("db.php");
+    $query = "SELECT * FROM `users` WHERE `u_mail`=`$u_mail` and `u_password`=`$u_password`";
     $result = $db -> query($query);
+
     if ($result->num_rows == 0) {
-        echo "Your e-mail or password is wrong.";
+        $message = "Your e-mail or password is wrong.";
     } else {
         $_SESSION["u_mail"] = $u_mail;
         $row = $result->fetch_row();
-        $_SESSION["u_name"] = $row[2];
-        $_SESSION['role'] = $row[9];
+        $_SESSION["u_name"] = $row[1];
+        $_SESSION["u_uni"] = $row[6];
+        $_SESSION["u_password"] = $row[7];
+        $_SESSION["role"] = $row[8];
         header("Location: userindex.php");
     }
 }
@@ -37,6 +40,7 @@ if(isset($_POST["submit"])) {
         <label>Password</label>
         <input type="password" name="u_password">
         <input type="submit" name="submit">
+        <p align="center"><?php if(isset($message)) { echo $message; } ?></p>
     </form>
 </div>
 <?php include 'footer.php';?>
